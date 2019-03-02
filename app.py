@@ -5,7 +5,6 @@ from flask import Flask, request, render_template
 app = Flask(__name__)
 
 donations = [
-    {'username': 'annonymous', 'amount': 3},
 ]
 
 @app.route('/')
@@ -14,11 +13,11 @@ def index():
 
 @app.route('/api/donate', methods=['POST',])
 def donate():
-    data = request.get_json()
+    data = request.get_json(force=True)
 
     entry = {}
-    entry['username'] = data['username']
-    entry['amount'] = data['amount']
+    entry['timestamp'] = data['timestamp']
+    entry['change'] = data['change']
 
     donations.append(entry)
 
