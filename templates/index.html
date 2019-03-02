@@ -1,0 +1,13 @@
+<html>
+<head>
+</head>
+<body>
+Hi!
+<h2>Recent Donations</h2>
+<ul>
+{% for d in donations %}
+	<li>{{ d.username }} - ${{ d.amount}}</li>
+{% endfor %}
+</ul>	
+</body>
+</html>
