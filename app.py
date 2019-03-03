@@ -23,9 +23,17 @@ def donate():
 
     return json.dumps({'status': 'successful'})
 
-@app.route('/login', methods=['POST' ,])
+@app.route('/login', methods=['POST', 'GET'])
 def login():
-    pass
+    if request.method == 'GET':
+        # Redner the page.
+        return render_template('login.html')
+    else:
+        pass
+
+@app.route('/charities', methods=['GET' ,])
+def charities_page():
+    return render_template('Charities.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
