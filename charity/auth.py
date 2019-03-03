@@ -4,6 +4,7 @@ from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
 from werkzeug.security import check_password_hash, generate_password_hash
+from sqlalchemy.orm.exc import NoResultFound
 
 from charity.models import db, User
 
@@ -43,7 +44,7 @@ def login():
             if not user.password == password:
                 error = 'Incorrect username or password.'
 
-        except sqlalchemy.orm.exc.NoResultFound as ex:
+        except NoResultFound as ex:
             error = 'Incorrect username or password.'
 
         if error is None:
