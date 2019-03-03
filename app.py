@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 import json
+import sqlite3
 from flask import Flask, request, render_template
 
+usercon = sqlite3.connect('users.db')
 app = Flask(__name__, static_url_path='/static')
 
 donations = [
@@ -30,6 +32,18 @@ def login():
         return render_template('login.html')
     else:
         pass
+
+@app.route('/signup', methods=['POST', 'GET'])
+def signup():
+    if request.method == 'GET':
+        return render_template('signup.html')
+
+    elif request.method == 'POST':
+
+        c = usercon.cursor()
+
+        c.execute('''CREATE TABLE users (nvarchar(319) email, nvarchar(32) pswrd)''')
+
 
 @app.route('/charities', methods=['GET' ,])
 def charities_page():
