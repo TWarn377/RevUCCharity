@@ -5,7 +5,7 @@
 
 {% block content %}
 <div class="mx-auto mt-3" style="width: 80%">
-  <h2>Recent Donations</h2>
+  <h2>Recent Donations ({{ '$%0.2f' | format(g.total_donation) }})</h2>
   <ul class ="list-group">
   {% for d in donations %}
     <li class = "list-group-item">{{ d.username }} - ${{ d.amount}}</li>

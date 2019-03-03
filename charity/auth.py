@@ -19,6 +19,12 @@ def load_logged_in_user():
     else:
         g.user = User.query.filter(User.id == user_id).one()
 
+        # Calculate total donation.
+        sum_result = 0
+        for d in g.user.donations:
+            sum_result += d.amount
+        g.total_donation = sum_result
+
 def login_required(view):
     @functools.wraps(view)
     def wrapped_view(**kwargs):
