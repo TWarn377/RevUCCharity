@@ -1,6 +1,13 @@
-function roundUp(num, precision) {
-  precision = Math.pow(1, precision);
-  return Math.ceil(num * precision);
+function roundUp() {
+  var amount = 1.35;
+//  alert("hello");
+  var amount = document.getElementById("inputDonation").value;
+  var rounded = roundUp(amount, 0);
+  var change = (rounded - amount).toFixed(2);
+  alert(change);
+  postData('http://ec2-18-235-225-4.compute-1.amazonaws.com:5000/api/donate', {
+    change: change,
+    timestamp: new Date().toISOString()});
 }
 
 function postData(url = ``, data = {}) {
@@ -19,4 +26,8 @@ function postData(url = ``, data = {}) {
         body: JSON.stringify(data), // body data type must match "Content-Type" header
     })
     .then(response => response.json()); // parses response to JSON
+}
+
+function subtract(aca = 0, rc = 0, achso = 0, sj = 0, maw = 0){
+
 }
