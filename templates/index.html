@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="{{ url_for('static', filename='js/RevUCCharity.js') }}"></script>
 <title>RevUC Charity</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 </head>
 <!-- <LINK href="{{ url_for('static', filename='styles/indexStyle.css') }}" title="compact" rel="stylesheet" type="text/css"> -->
 <body>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">RevUCDonate</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,16 +70,59 @@
   </div>
   <div class="form-group mx-sm-3 mb-2">
     <label for="inputPassword2" class="sr-only">Amount:</label>
-    <input type="text" class="form-control" id="inputDonation" placeholder="Enter Amount">
-
+    <td><input type="text" class="form-control" id="inputDonation" placeholder="Enter Amount">
+    <button onclick="calculateChange()">Send</button></td>
   </div>
-  <button type="submit" class="btn btn-primary mb-2">Send</button>
+  <!--<button onclick="roundUp()">Send</button>-->
 </form>
 
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-<script src="{{ url_for('static', filename='js/RevUCCharity.js') }}"></script>
+
 </body>
+
+<script type="text/javascript">
+function calculateChange() {
+  //var amount = 1.35;
+  //alert("hello");
+  var amount = document.getElementById("inputDonation").value;
+  var rounded = roundUp(amount, 0);
+  var change = (rounded - amount).toFixed(2);
+  alert(change);
+  postData('http://ec2-18-235-225-4.compute-1.amazonaws.com:5000/api/donate', {
+    change: change,
+    timestamp: new Date().toISOString()});
+}
+
+function roundUp(num, precision) {
+  precision = Math.pow(1, precision);
+  return Math.ceil(num * precision);
+}
+
+function postData(url = ``, data = {}) {
+  // Default options are marked with *
+    return fetch(url, {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        mode: "no-cors", // no-cors, cors, *same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, *same-origin, omit
+        headers: {
+            "Content-Type": "application/json",
+            // "Content-Type": "application/x-www-form-urlencoded",
+        },
+        redirect: "follow", // manual, *follow, error
+        referrer: "no-referrer", // no-referrer, *client
+        body: JSON.stringify(data), // body data type must match "Content-Type" header
+    })
+    .then(response => response.json()); // parses response to JSON
+}
+
+function subtract(aca = 0, rc = 0, achso = 0, sj = 0, maw = 0){
+
+}
+
+</script>
+
 </html>

@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Charity List</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/CharitiesStyles.css') }}">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <title>Charity List</title>
   </head>
   <body>
 <!--<LINK href="./styles/CharitiesStyle.css" title="compact" rel="stylesheet" type="text/css">-->
       <div class = "container">
-        <h1><a style = "color:Tomato;" href = "https://www.cancer.org/"class= "MenuLink">American Cancer Society</a>    <a href = "" class = "MenuLink">Donate</a></h1>
-        <h1><a style = "color:Tomato;" href = "https://www.redcross.org/" class= "MenuLink">Red Cross</a>    <a href = "" class = "MenuLink">Donate</a></h1>
-        <h1><a style = "color:Tomato;" href = "http://www.animalcharityofohio.org/" class= "MenuLink">Animal Charity Humane Society of Ohio</a>    <a href = "" class = "MenuLink">Donate</a></h1>
-        <h1><a style = "color:Tomato;" href = "https://www.stjude.org/" class= "MenuLink">St. Judes Children Hospital</a>    <a href = "" class = "MenuLink">Donate</a></h1>
-        <h1><a style = "color:Tomato;" href = "http://wish.org/" class= "MenuLink">Make a wish</a>    <a href = "" class = "MenuLink">Donate</a></h1>
+        <h1><a style = "color:DodgerBlue;">Enter the amount you'd like to give to each charity.</h1>
+        <h1><a style = "color:Tomato;" href = "https://www.cancer.org/"class= "MenuLink">American Cancer Society</a></h1>
+        <input type="text" class="form-control" id="inputDonation" placeholder="Enter Amount">
+        <h1><a style = "color:Tomato;" href = "https://www.redcross.org/" class= "MenuLink">Red Cross</a></h1>
+        <input type="text" class="form-control" id="inputDonation" placeholder="Enter Amount">
+        <h1><a style = "color:Tomato;" href = "http://www.animalcharityofohio.org/" class= "MenuLink">Animal Charity Humane Society of Ohio</a></h1>
+        <input type="text" class="form-control" id="inputDonation" placeholder="Enter Amount">
+        <h1><a style = "color:Tomato;" href = "https://www.stjude.org/" class= "MenuLink">St. Judes Children Hospital</a></h1>
+        <input type="text" class="form-control" id="inputDonation" placeholder="Enter Amount">
+        <h1><a style = "color:Tomato;" href = "http://wish.org/" class= "MenuLink">Make a wish</a></h1>
+        <input type="text" class="form-control" id="inputDonation" placeholder="Enter Amount">
+        <li class="nav-item">
+          <button type="button" class="btn btn-info">Touch me!</button>
+        </li>
     </div>
     <div class = "rectangle"><a style = "color:Gray"></a></div>
     <div class = "square"><a style = "color:White;" href = "/" class = "MenuLink">Back to home</a></div>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
