@@ -5,6 +5,8 @@ import json
 from flask import Flask, render_template
 from flask_migrate import Migrate
 
+from charity.models import db, Donation
+
 config = {
     'default': 'charity.config.DevelopmentConfig',
     'development': 'charity.config.DevelopmentConfig',
@@ -38,8 +40,10 @@ def create_app():
     # Views.
     @app.route('/')
     def index():
-        return render_template('index.html', donations=[])
-    
+        # Query data form database.
+        result = Donation.query.all()
+
+        return render_template('index.html', donations=result)
 
     @app.route('/login', methods=['POST', 'GET'])
     def login():
