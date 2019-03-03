@@ -1,4 +1,14 @@
 {% extends "base.html" %}
+{% block head %}
+<script type="text/javascript">
+fetch(`${window.API_ROOT}/total_donation`).then(response => {
+  return response.json();
+}).then((r) => {
+  window.total_donation = r['total_donation'];
+});
+</script>
+{% endblock %}
+
 {% block content %}
 <div class="mx-auto mt-3" style="width: 80%">
   <h1><a style = "color:DodgerBlue;">Enter the amount you'd like to give to each charity.</h1>

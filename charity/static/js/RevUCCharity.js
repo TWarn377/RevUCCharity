@@ -5,7 +5,7 @@ function roundUp() {
   var rounded = roundUp(amount, 0);
   var change = (rounded - amount).toFixed(2);
   alert(change);
-  postData('http://ec2-18-235-225-4.compute-1.amazonaws.com/api/donate', {
+  postData(`${window.API_ROOT}/donate`, {
     change: change,
     timestamp: new Date().toISOString()});
 }
