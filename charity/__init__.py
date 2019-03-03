@@ -2,7 +2,7 @@
 import os
 import json
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_migrate import Migrate
 
 from charity.models import db, Donation
@@ -16,6 +16,10 @@ config = {
 def create_app():
     app = Flask(__name__,
         static_url_path='/static'
+    )
+
+    app.config.from_mapping(
+        SECRET_KEY='dev',
     )
 
     config_name = os.getenv('FLASK_CONFIGURATION', 'default')
@@ -45,29 +49,9 @@ def create_app():
 
         return render_template('index.html', donations=result)
 
-    @app.route('/login', methods=['POST', 'GET'])
-    def login():
-        if request.method == 'GET':
-            # Redner the page.
-            return render_template('login.html')
-        else:
-            pass
-
-    @app.route('/signup', methods=['POST', 'GET'])
-    def signup():
-        if request.method == 'GET':
-            return render_template('signup.html')
-
-        elif request.method == 'POST':
-
-            c = usercon.cursor()
-
-            c.execute('''CREATE TABLE users (nvarchar(319) email, nvarchar(32) pswrd)''')
-
-
     @app.route('/charities', methods=['GET' ,])
     def charities_page():
-        return render_template('Charities.html')
+        return render_template('charities.html')
     
     return app
 

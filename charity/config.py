@@ -1,7 +1,7 @@
 # -*- config: utf-8 -*-
 import os
 
-class BaseConfig:
+class BaseConfig(object):
     SECRET = 'dev'
     DEBUG = False
     TESTING = False
